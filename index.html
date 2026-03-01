@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>לימוד סבולת - הכנה למבחן</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #14b8a6;
+            --primary-dark: #0d9488;
+            --accent: #fbbf24;
+            --accent-soft: #fef3c7;
+            --bg-dark: #0c1222;
+            --bg-card: #1a2332;
+            --bg-card-hover: #243044;
+            --text: #f1f5f9;
+            --text-muted: #94a3b8;
+            --success: #22c55e;
+            --error: #ef4444;
+            --radius: 16px;
+            --shadow: 0 4px 24px rgba(0,0,0,0.3);
+            --gradient-hero: linear-gradient(135deg, rgba(20,184,166,0.3) 0%, rgba(251,191,36,0.1) 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Heebo', sans-serif;
+            background: var(--bg-dark);
+            background-image: radial-gradient(ellipse at top, #1a2a3a 0%, #0c1222 70%);
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .hero {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200') center/cover;
+            filter: brightness(0.4);
+        }
+
+        .hero-overlay {
+            position: relative;
+            padding: 3rem 2rem;
+            background: var(--gradient-hero);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 0.75rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: white;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+            letter-spacing: -0.02em;
+        }
+
+        .hero .subtitle {
+            color: rgba(255,255,255,0.95);
+            font-size: 1.15rem;
+            font-weight: 400;
+        }
+
+        header {
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: var(--radius) var(--radius) 0 0;
+            margin: -1.5rem -2rem 1rem -2rem;
+        }
+
+        .card.has-img {
+            overflow: hidden;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-tab {
+            padding: 0.75rem 1.25rem;
+            background: var(--bg-card);
+            border: 2px solid transparent;
+            border-radius: 10px;
+            color: var(--text);
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: all 0.25s ease;
+        }
+
+        .nav-tab:hover {
+            border-color: var(--primary);
+            background: rgba(20, 184, 166, 0.15);
+            transform: translateY(-1px);
+        }
+
+        .nav-tab.active {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 12px rgba(20, 184, 166, 0.4);
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 1.5rem 2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.06);
+            box-shadow: var(--shadow);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+        }
+
+        .card h2 {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            margin: 1rem 0 0.5rem;
+            color: var(--accent);
+        }
+
+        .card ul, .card ol {
+            margin: 0.5rem 0 0 1.5rem;
+        }
+
+        .card li {
+            margin-bottom: 0.4rem;
+        }
+
+        .highlight-box {
+            background: rgba(13, 148, 136, 0.15);
+            border-right: 4px solid var(--primary);
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+
+        .formula {
+            font-family: 'Courier New', monospace;
+            background: rgba(0,0,0,0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            margin: 0.5rem 0;
+            direction: ltr;
+            text-align: left;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: var(--bg-card);
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.4s ease;
+            border-radius: 3px;
+        }
+
+        .quiz-question {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 1.5rem 2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .quiz-question h3 {
+            color: var(--text);
+            margin-bottom: 1rem;
+            font-size: 1.15rem;
+        }
+
+        .answer-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem 1.5rem;
+            margin: 0.5rem 0;
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius);
+            color: var(--text);
+            font-family: inherit;
+            font-size: 1rem;
+            text-align: right;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .answer-btn:hover:not(.disabled) {
+            border-color: var(--primary);
+            background: rgba(13, 148, 136, 0.2);
+        }
+
+        .answer-btn.correct {
+            border-color: var(--success);
+            background: rgba(34, 197, 94, 0.2);
+        }
+
+        .answer-btn.wrong {
+            border-color: var(--error);
+            background: rgba(239, 68, 68, 0.2);
+        }
+
+        .answer-btn.disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .explanation {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(0,0,0,0.3);
+            border-radius: var(--radius);
+            border-right: 4px solid var(--primary);
+            display: none;
+        }
+
+        .explanation.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .explanation.correct {
+            border-right-color: var(--success);
+        }
+
+        .explanation.wrong {
+            border-right-color: var(--error);
+        }
+
+        .flashcard {
+            perspective: 1000px;
+            margin: 1rem 0;
+        }
+
+        .flashcard-inner {
+            position: relative;
+            width: 100%;
+            min-height: 150px;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .flashcard.flipped .flashcard-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flashcard-front, .flashcard-back {
+            position: absolute;
+            width: 100%;
+            min-height: 150px;
+            backface-visibility: hidden;
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .flashcard-back {
+            transform: rotateY(180deg);
+            background: rgba(13, 148, 136, 0.2);
+            border-color: var(--primary);
+        }
+
+        .flashcard-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+        }
+
+        .flashcard-nav button {
+            padding: 0.5rem 1rem;
+            background: var(--primary);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .flashcard-nav button:hover {
+            background: var(--primary-dark);
+        }
+
+        .stats {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-box {
+            background: var(--bg-card);
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius);
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        .stat-box .number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-box .label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .start-quiz-btn, .retry-btn {
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            margin: 2rem auto;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border: none;
+            border-radius: var(--radius);
+            color: white;
+            font-size: 1.2rem;
+            font-family: inherit;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .start-quiz-btn:hover, .retry-btn:hover {
+            transform: scale(1.02);
+        }
+
+        .quiz-result {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .quiz-result h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .quiz-result .score {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            text-align: right;
+        }
+
+        th {
+            background: rgba(13, 148, 136, 0.2);
+            color: var(--primary);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin: 0 0.2rem;
+        }
+
+        .badge-aerobic { background: rgba(34, 197, 94, 0.3); }
+        .badge-anaerobic { background: rgba(239, 68, 68, 0.3); }
+        .badge-hiit { background: rgba(245, 158, 11, 0.3); }
+
+        .hr-zone-diagram {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: rgba(0,0,0,0.2);
+            border-radius: var(--radius);
+        }
+
+        .hr-zone-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.5rem 0;
+        }
+
+        .hr-zone-bar {
+            flex: 1;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: white;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .hr-zone-anaerobic { background: linear-gradient(90deg, #dc2626, #ef4444); }
+        .hr-zone-hiit { background: linear-gradient(90deg, #ea580c, #f59e0b); }
+        .hr-zone-threshold { background: linear-gradient(90deg, #ca8a04, #eab308); }
+        .hr-zone-aerobic { background: linear-gradient(90deg, #16a34a, #22c55e); }
+        .hr-zone-easy { background: linear-gradient(90deg, #0d9488, #14b8a6); }
+
+        .img-credit {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        .img-credit a { color: var(--primary); text-decoration: none; }
+
+        .check-yourself {
+            margin-top: 1.5rem;
+            padding: 1rem 1.5rem;
+            background: rgba(251, 191, 36, 0.08);
+            border: 2px dashed var(--accent);
+            border-radius: var(--radius);
+        }
+        .check-yourself h3 { color: var(--accent); margin-bottom: 0.5rem; }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(20, 184, 166, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-top:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 24px rgba(20, 184, 166, 0.6);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .hero-stat {
+            background: rgba(255,255,255,0.15);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+        .hero-stat strong { color: var(--accent); }
+
+        .card { animation: cardSlideIn 0.5s ease backwards; }
+        .section.active .card:nth-child(1) { animation-delay: 0.05s; }
+        .section.active .card:nth-child(2) { animation-delay: 0.1s; }
+        .section.active .card:nth-child(3) { animation-delay: 0.15s; }
+        .section.active .card:nth-child(4) { animation-delay: 0.2s; }
+        .section.active .card:nth-child(5) { animation-delay: 0.25s; }
+        .section.active .card:nth-child(6) { animation-delay: 0.3s; }
+        .section.active .card:nth-child(7) { animation-delay: 0.35s; }
+        .section.active .card:nth-child(8) { animation-delay: 0.4s; }
+        .section.active .card:nth-child(9) { animation-delay: 0.45s; }
+        .section.active .card:nth-child(n+10) { animation-delay: 0.5s; }
+        @keyframes cardSlideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .keyboard-hint {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        .print-btn {
+            padding: 0.5rem 1rem;
+            background: var(--primary);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            font-family: inherit;
+            margin: 0.5rem 0;
+        }
+        .print-btn:hover { background: var(--primary-dark); }
+        @media print {
+            .nav-tabs, .progress-bar, .back-to-top, .hero-stats, .print-btn, button { display: none !important; }
+            .section { display: block !important; }
+            .section:not(.active) { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <div class="hero-bg"></div>
+            <div class="hero-overlay">
+                <h1>🏃 לימוד סבולת</h1>
+                <p class="subtitle">הכנה מלאה למבחן - למידה אינטראקטיבית עם תמונות ובחינה</p>
+                <div class="hero-stats">
+                    <span class="hero-stat"><strong id="heroFlashCount">0</strong> כרטיסיות</span>
+                    <span class="hero-stat"><strong id="heroQuizCount">0</strong> שאלות בחינה</span>
+                    <span class="hero-stat"><strong>10</strong> נושאי לימוד</span>
+                </div>
+            </div>
+        </div>
+
+        <nav class="nav-tabs">
+            <button class="nav-tab" data-section="how-to-learn">📚 איך ללמוד</button>
+            <button class="nav-tab active" data-section="intro">מבוא</button>
+            <button class="nav-tab" data-section="zones">אזורי סבולת</button>
+            <button class="nav-tab" data-section="tests">בדיקות</button>
+            <button class="nav-tab" data-section="protocols">פרוטוקולים</button>
+            <button class="nav-tab" data-section="training">שיטות אימון</button>
+            <button class="nav-tab" data-section="research">מחקרים</button>
+            <button class="nav-tab" data-section="cheatsheet">📋 דף צ'יט</button>
+            <button class="nav-tab" data-section="flashcards">כרטיסיות</button>
+            <button class="nav-tab" data-section="quiz">בחינה</button>
+        </nav>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+        </div>
+
+        <section id="how-to-learn" class="section">
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1200&q=80" alt="למידה יעילה">
+                <h2>📚 איך ללמוד את החומר ביעילות מקסימלית</h2>
+                <p>מבוסס על מחקרי למידה ופדגוגיה – שיטות שהוכחו מדעית כמשפרות זכירה והבנה.</p>
+            </div>
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1522202176988-66273c2db55d?w=1200&q=80" alt="מסלול למידה">
+                <h2>🗺️ מסלול הלמידה המומלץ</h2>
+                <p>למד לפי הסדר – כל נושא בונה על הקודם:</p>
+                <ol>
+                    <li><strong>מבוא</strong> – הבן מהי סבולת וסוגיה (תורצק, תינוניב, תכורא)</li>
+                    <li><strong>אזורי סבולת</strong> – טווחי דופק, מדדי אימון</li>
+                    <li><strong>בדיקות</strong> – נוסחאות, 6MWT, Bruce, VO2max, RPE</li>
+                    <li><strong>שיטות אימון</strong> – רופף נמוך/בינוני/עצים, HIIT</li>
+                    <li><strong>כרטיסיות</strong> – חזרה פעילה</li>
+                    <li><strong>בחינה</strong> – בדוק את עצמך</li>
+                </ol>
+            </div>
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=1200&q=80" alt="חזרה מרווחת">
+                <h2>🔄 חזרה מרווחת (Spaced Repetition)</h2>
+                <p>מחקרים מראים: למידה מפוזרת על פני ימים יעילה פי 2 מלחפור ברגע האחרון.</p>
+                <div class="highlight-box">
+                    <strong>לוח זמנים מומלץ:</strong><br>
+                    יום 1–2: למידה ראשונה → יום 4–5: חזרה ראשונה → יום 8–10: חזרה שנייה → יום 14–21: חזרה שלישית
+                </div>
+                <p>השתמש בכרטיסיות כל יום – גם 10 דקות עושות הבדל.</p>
+            </div>
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&q=80" alt="Recall פעיל">
+                <h2>🧠 Recall פעיל (Active Recall)</h2>
+                <p>במקום לקרוא שוב ושוב – <strong>נסה להיזכר</strong>. זה מחזק את הזיכרון פי כמה.</p>
+                <ul>
+                    <li>לפני שמהפכים כרטיס – נסה לענות בראש</li>
+                    <li>בבחינה – אל תפחד לטעות, הטעות מלמדת</li>
+                    <li>סגור את הספר וספר בקול מה למדת</li>
+                </ul>
+            </div>
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1200&q=80" alt="טריקי זיכרון">
+                <h2>💡 טריקי זיכרון (מנמוניקה)</h2>
+                <table>
+                    <tr><th>נושא</th><th>טריק</th></tr>
+                    <tr><td>דופק מקסימלי – יוזיח</td><td><strong>220 לגבר, 226 לאישה</strong> – זכור: 6 יותר לאישה</td></tr>
+                    <tr><td>6MWT מוגבלות</td><td><strong>300 מטר</strong> – "שלוש מאות = סף"</td></tr>
+                    <tr><td>סף אנאירובי</td><td><strong>75–80% HR</strong> – בין רופף (70) ל-HIIT (90)</td></tr>
+                    <tr><td>רופף נמוך</td><td><strong>60–65%</strong> – "נמוך = ששים"</td></tr>
+                    <tr><td>HIIT</td><td><strong>90–100%</strong> – "הייט = כמעט מקסימום"</td></tr>
+                    <tr><td>E-MECHANIC</td><td><strong>פיצוי מטבולי</strong> – אימון לא = ירידה במשקל ישירה</td></tr>
+                </table>
+            </div>
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&q=80" alt="טיפים מעשיים">
+                <h2>✅ טיפים מעשיים</h2>
+                <ul>
+                    <li><strong>חלק לחתיכות</strong> – 25 דקות לימוד + 5 דקות מנוחה (טכניקת פומודורו)</li>
+                    <li><strong>ערבב נושאים</strong> – אל תלמד רק אזורים ואז רק בדיקות – ערבב</li>
+                    <li><strong>בדוק את עצמך</strong> – הבחינה באתר היא כלי למידה, לא רק הערכה</li>
+                    <li><strong>הסבר לאחרים</strong> – אם אתה יכול להסביר – אתה מבין</li>
+                    <li><strong>שינה</strong> – הזיכרון מתגבש בשינה – אל תחפור כל הלילה</li>
+                </ul>
+            </div>
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80" alt="עקומת השכחה">
+                <h2>📊 עקומת השכחה (Ebbinghaus)</h2>
+                <p>בלי חזרה: שוכחים ~40% תוך 20 דקות, ~70% תוך יום, ~80% תוך חודש.</p>
+                <p>עם חזרה מרווחת: כל שליפה מוצלחת משטחת את העקומה – הזיכרון נשאר.</p>
+                <div class="highlight-box">
+                    <strong>המפתח:</strong> חזור על החומר לפני שאתה שוכח – לא אחרי.
+                </div>
+            </div>
+            <div class="card" style="border:2px solid var(--accent)">
+                <h2>📢 טכניקת פיינמן – "הסבר בקול"</h2>
+                <p>אחת השיטות החזקות ביותר: <strong>הסבר את החומר בקול רם כאילו אתה מלמד מישהו שלא יודע.</strong></p>
+                <ul>
+                    <li>אחרי כל נושא – עצור והסבר בקול: "סבולת אנאירובית זה..."</li>
+                    <li>אם נתקעת – חזור לחומר. זה מראה מה לא הבנת</li>
+                    <li>השתמש במילים פשוטות – לא לחזור על הספר</li>
+                </ul>
+                <div class="highlight-box">
+                    <strong>נסה עכשיו:</strong> הסבר בקול מה ההבדל בין תורצק, תינוניב ותכורא – בלי להסתכל.
+                </div>
+            </div>
+        </section>
+
+        <section id="intro" class="section active">
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&q=80" alt="ריצה וסבולת">
+                <h2>מהי סבולת?</h2>
+                <p>סבולת היא היכולת של האדם להתמיד במאמץ גופני לאורך זמן. "אני יכול לסבול" – יכולת להתמיד במאמץ.</p>
+                <div class="highlight-box">
+                    <strong>סבולת טובה = כושר טוב</strong> (יכולת להתמיד במאמץ)
+                </div>
+                <h3>סוגי סבולת לפי זמן (חווט = טווח):</h3>
+                <ul>
+                    <li><span class="badge badge-anaerobic">טווח קצר (חווט תורצק)</span> – סבולת אנאירובית</li>
+                    <li><span class="badge badge-aerobic">טווח בינוני (חווט תינוניב)</span> – סבולת אירובית</li>
+                    <li><span class="badge badge-aerobic">טווח ארוך (חווט תכורא)</span> – סבולת אירובית ארוכה</li>
+                </ul>
+                <div class="check-yourself" data-quiz="intro">
+                    <h3>✅ בדוק את עצמך – מבוא</h3>
+                    <p>לפני שתמשיך: מה ההבדל בין סבולת אנאירובית לאירובית ארוכה?</p>
+                    <button class="answer-btn" onclick="toggleCheckAnswer(this,'intro')">הצג תשובה</button>
+                    <p class="check-answer" style="display:none;margin-top:0.5rem;padding:0.75rem;background:rgba(34,197,94,0.2);border-radius:8px">אנאירובית: עד ~2 דקות, 85% HR. אירובית ארוכה: מעל 15 דקות, 60-65% HR.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="zones" class="section">
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=1200&q=80" alt="אזורי דופק">
+                <h2>דיאגרמת אזורי דופק (HR Zones)</h2>
+                <p>מבט ויזואלי על טווחי הדופק לפי סוג האימון:</p>
+                <div class="hr-zone-diagram">
+                    <div class="hr-zone-row">
+                        <span style="width:140px">אנאירובי</span>
+                        <div class="hr-zone-bar hr-zone-anaerobic" style="flex:3">85-100% HR</div>
+                    </div>
+                    <div class="hr-zone-row">
+                        <span style="width:140px">HIIT</span>
+                        <div class="hr-zone-bar hr-zone-hiit" style="flex:2.5">80-90% HR</div>
+                    </div>
+                    <div class="hr-zone-row">
+                        <span style="width:140px">סף אנאירובי</span>
+                        <div class="hr-zone-bar hr-zone-threshold" style="flex:2">75-80% HR</div>
+                    </div>
+                    <div class="hr-zone-row">
+                        <span style="width:140px">אירובי בינוני</span>
+                        <div class="hr-zone-bar hr-zone-aerobic" style="flex:1.5">70-75% HR</div>
+                    </div>
+                    <div class="hr-zone-row">
+                        <span style="width:140px">רופף נמוך</span>
+                        <div class="hr-zone-bar hr-zone-easy" style="flex:1">60-65% HR</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=1200&q=80" alt="ספרינט">
+                <h2>חווט תורצק – סבולת אנאירובית</h2>
+                <ul>
+                    <li>תקופה: 2~ דקות (מאמצים קצרים)</li>
+                    <li>מאמצים אנאירוביים בעיקר</li>
+                    <li>עוצמת מאמץ מקסימלית = מאמצים אנאירוביים (כ-85% HR<sub>MAX</sub>)</li>
+                    <li>דוגמאות: ספרינט, קפיצה</li>
+                </ul>
+            </div>
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=1200&q=80" alt="ריצה בינונית">
+                <h2>חווט תינוניב – סבולת אירובית</h2>
+                <ul>
+                    <li>תקופה: 2-15 דקות (מאמצים בינוניים)</li>
+                    <li>מאמץ בגבול אירובי-אנאירובי (70-80% HR<sub>MAX</sub>)</li>
+                    <li>דוגמאות: ריצה 400 מטר, 2000 מטר</li>
+                </ul>
+            </div>
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1200&q=80" alt="ריצה ארוכה">
+                <h2>חווט תכורא – סבולת אירובית ארוכה</h2>
+                <ul>
+                    <li>תקופה: מעל 15 דקות (מאמצים נמוכים)</li>
+                    <li>מאמצים אירוביים נמוכים (מתחת ל-30 דקות)</li>
+                    <li>HR 60-65% מהמקסימום</li>
+                </ul>
+            </div>
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=1200&q=80" alt="מדדי אימון">
+                <h2>מדדי האימון (האיר בל תלובס)</h2>
+                <ul>
+                    <li><strong>מ"חצ</strong> (תיברימ ןצמח תכירצ) – צריכת חמצן מקסימלית</li>
+                    <li><strong>סף אנאירובי</strong> (טאטקל ףס / יבוריאנא ףס) – סף לקטט</li>
+                    <li><strong>HR max</strong> (יברימ קפוד) – דופק מקסימלי</li>
+                    <li><strong>תיבוריא תלובס</strong> – סבולת אירובית</li>
+                    <li><strong>סף אירובי</strong> (יברימ יבוריא קפסה)</li>
+                    <li><strong>רופף / נומיא</strong> (תוגופה \ ףצר) – אימון רופף</li>
+                </ul>
+                <div class="check-yourself" data-quiz="zones">
+                    <h3>✅ בדוק את עצמך – אזורים</h3>
+                    <p>מה טווח הדופק לרופף נמוך ומה ל-HIIT?</p>
+                    <button class="answer-btn" onclick="toggleCheckAnswer(this,'zones')">הצג תשובה</button>
+                    <p class="check-answer" style="display:none;margin-top:0.5rem;padding:0.75rem;background:rgba(34,197,94,0.2);border-radius:8px">רופף נמוך: 60-65% HR. HIIT: 90-100% HR.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="tests" class="section">
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=1200&q=80" alt="מדידת דופק">
+                <h2>בל קפוד – דופק מקסימלי</h2>
+                <p>דופק מקסימלי = מדד לעצימות מקסימלית של נומיא. לא ניתן למדוד דופק מעל עצימות הנומיא (HR מזויח).</p>
+                <div class="highlight-box">
+                    <h3>נוסחאות לחישוב:</h3>
+                    <p><strong>יוזיח תחסונ:</strong> גברים: 220 − גיל | נשים: 226 − גיל</p>
+                    <p><strong>הקנט תחסונ:</strong> 208 − (0.7 × גיל)</p>
+                </div>
+                <div class="formula">גברים: 220−גיל | 226−גיל (נשים)</div>
+                <div class="formula">208−(0.7×גיל) – נוסחת טנקה</div>
+            </div>
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&q=80" alt="RPE תחושת מאמץ">
+                <h2>RPE – תיביטקייבוסה ץמאמה תשוחת</h2>
+                <p>תחושת מאמץ סובייקטיבית. מדידה בגוונים: עוצמת מאמץ, סטטוס, נשימה, דופק...</p>
+                <p>אין התאמה מלאה בין RPE לבין מאמץ (HR max%).</p>
+            </div>
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=1200&q=80" alt="מבחן הליכה">
+                <h2>6MWT – הכילה 'קד 6 קדבמ</h2>
+                <p>מבחן הליכה של 6 דקות. משמש למטופלים עם מחלות כרוניות / בעיות נשימה / מוגבלויות פיזיות.</p>
+                <div class="highlight-box">
+                    <strong>הובג ןוכיס = 'מ 300 &lt; X</strong> (מתחת ל-300 מטר = מוגבלות)
+                </div>
+                <h3>נורמות (מטרים):</h3>
+                <p>גברים 20-29: מעולה מעל 2800 | מצוין 2400-2800 | ממוצע 2200-2399 | מתחת לממוצע 1600-2199 | חלש מתחת ל-1600</p>
+                <p>נשים 20-29: מעולה מעל 2700 | מצוין 2200-2700 | ממוצע 1800-2199</p>
+            </div>
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&q=80" alt="הליכון">
+                <h2>ץמאמ קדבמ / הליסמ קדבמ – Bruce Protocol</h2>
+                <div class="formula">גברים: 14.8 - (1.379×T) + (0.451×T²) - (0.012×T³)</div>
+                <div class="formula">נשים: 4.38×T - 3.9</div>
+            </div>
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1200&q=80" alt="מדידת VO2">
+                <h2>VO2 MAX – תיברימ ןצמח תכירצ ןחבמ</h2>
+                <ul>
+                    <li>מדידה מקסימלית של יכולת אירובית</li>
+                    <li>מדידה על הליכון או אופניים עם מסכת פנים</li>
+                    <li>לכל דקה מעלים את העצימות</li>
+                    <li>עד שהנבדק לא יכול להמשיך</li>
+                </ul>
+            </div>
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1200&q=80" alt="צריכת חמצן">
+                <h2>מ"חצ – צריכת חמצן מקסימלית (VO2)</h2>
+                <ul>
+                    <li>צריכת חמצן מקסימלית – הגוף צורכת מקסימום חמצן לייצור ATP</li>
+                    <li>תיברימ ןצמח תכירצ – הספקהה קפודה יכולה לגוף לצרוך חמצן לייצור ATP</li>
+                    <li>VO2 PEAK ~80% HR<sub>MAX</sub></li>
+                    <li>ממוצעים: 40-50 מ"ל/ק"ג/דקה | מאטרופס: 80-90 מ"ל/ק"ג/דקה</li>
+                </ul>
+                <div class="check-yourself" data-quiz="tests">
+                    <h3>✅ בדוק את עצמך – בדיקות</h3>
+                    <p>מה נוסחת יוזיח לדופק מקסימלי? מה הסף למוגבלות ב-6MWT?</p>
+                    <button class="answer-btn" onclick="toggleCheckAnswer(this,'tests')">הצג תשובה</button>
+                    <p class="check-answer" style="display:none;margin-top:0.5rem;padding:0.75rem;background:rgba(34,197,94,0.2);border-radius:8px">יוזיח: גברים 220−גיל, נשים 226−גיל. 6MWT: מתחת ל-300 מטר = מוגבלות.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="protocols" class="section">
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1576678927484-cc907957088c?w=1200&q=80" alt="פרוטוקול אימון">
+                <h2>טבלת נורמות 6MWT – לפי גיל ומין (מטרים)</h2>
+                <table>
+                    <tr><th>גיל</th><th>מין</th><th>מעולה</th><th>מעל ממוצע</th><th>ממוצע</th><th>מתחת לממוצע</th><th>חלש</th></tr>
+                    <tr><td>20-29</td><td>גברים</td><td>>2800</td><td>2400-2800</td><td>2200-2399</td><td>1600-2199</td><td><1600</td></tr>
+                    <tr><td>20-29</td><td>נשים</td><td>>2700</td><td>2200-2700</td><td>1800-2199</td><td>1500-1799</td><td><1500</td></tr>
+                    <tr><td>30-39</td><td>גברים</td><td>>2700</td><td>2300-2700</td><td>1900-2299</td><td>1500-1999</td><td><1500</td></tr>
+                    <tr><td>30-39</td><td>נשים</td><td>>2500</td><td>2000-2500</td><td>1700-1999</td><td>1400-1699</td><td><1400</td></tr>
+                    <tr><td>40-49</td><td>גברים</td><td>>2500</td><td>2100-2500</td><td>1700-2099</td><td>1400-1699</td><td><1400</td></tr>
+                    <tr><td>40-49</td><td>נשים</td><td>>2300</td><td>1900-2300</td><td>1500-1899</td><td>1200-1499</td><td><1200</td></tr>
+                    <tr><td>50+</td><td>גברים</td><td>>2400</td><td>2000-2400</td><td>1600-1999</td><td>1300-1599</td><td><1300</td></tr>
+                    <tr><td>50+</td><td>נשים</td><td>>2200</td><td>1700-2200</td><td>1400-1699</td><td>1100-1399</td><td><1100</td></tr>
+                </table>
+            </div>
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1509228468510-0e449b095101?w=1200&q=80" alt="נוסחאות דופק">
+                <h2>כל נוסחאות דופק מקסימלי</h2>
+                <table>
+                    <tr><th>מקור</th><th>גברים</th><th>נשים</th></tr>
+                    <tr><td>יוזיח</td><td>220−גיל</td><td>226−גיל</td></tr>
+                    <tr><td>טנקה</td><td>208−(0.7×גיל)</td><td>208−(0.7×גיל)</td></tr>
+                    <tr><td>אחרות</td><td>202−(0.55×גיל)</td><td>216−(1.09×גיל)</td></tr>
+                    <tr><td></td><td>208.609−(0.716×גיל)</td><td>209.273−(0.804×גיל)</td></tr>
+                    <tr><td></td><td>206−0.88×גיל</td><td></td></tr>
+                </table>
+            </div>
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=1200&q=80" alt="פרוטוקול RPE">
+                <h2>פרוטוקול גראד – RPE לפי דופק</h2>
+                <p>תוגוזל וקלחתה: מדידה סובייקטיבית (RPE), דופק (יוזח), מהירות, שיפוע.</p>
+                <table>
+                    <tr><th>RPE</th><th>HR % max</th><th>תיאור</th></tr>
+                    <tr><td>60</td><td>~50%</td><td>ת.נמאתמו ת.נמאמל – חימום</td></tr>
+                    <tr><td>70</td><td></td><td>תוקד 2-3 לכ תומיצעה – העלאה הדרגתית</td></tr>
+                    <tr><td>75</td><td></td><td>םאתהב הלבטה – אימון</td></tr>
+                    <tr><td>80</td><td></td><td>םידיקפתב ופלחתה</td></tr>
+                    <tr><td>85</td><td></td><td>םאתהב הנתשמ ףצר ןומיא – אימון רופף עצים</td></tr>
+                    <tr><td>90</td><td></td><td>םייתימאה םיקפדל – מקסימלי</td></tr>
+                </table>
+            </div>
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&q=80" alt="מדידת סף לקטט">
+                <h2>מדידת סף לקטט (טאטקלה ףס ןחבמ)</h2>
+                <ul>
+                    <li>מדידה על הליכון – מעלים עצימות בהדרגה עד סף הלקטט</li>
+                    <li>הליסמ לע הצירב דדמנ ברל</li>
+                    <li>תוקד 5-10 ךשב הלק הצירב – דקה דקה מעלים עצימות</li>
+                    <li>טאטקלה ףסל ועיגי םינמואמ אל םיקדבנה – לא מאמאנים מתחת לסף</li>
+                    <li>מ"חצהמ 80-95%ל עיגהל – מאטרופס עיגים</li>
+                </ul>
+                <h3>טאטקלה – מרחקים:</h3>
+                <ul>
+                    <li>מהריהמ 24 דע: לומילימ 1-4 (טאטקל \ רטיל םד)</li>
+                    <li>מלחה 24מ ש"מק: לומילימ 2.5כ רצונ HR 90% max – הבוט טאטקל קוליס</li>
+                </ul>
+            </div>
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1517838277536-f5f99be501cc?w=1200&q=80" alt="עצימות אימון">
+                <h2>טבלת עצימות אימון – HR % MAX</h2>
+                <table>
+                    <tr><th>סוג אימון</th><th>עצימות</th><th>HR %</th><th>לאתמ</th></tr>
+                    <tr><td>בחרנ ףצר</td><td>3-5</td><td>55-65</td><td>םינמאתמה לכ</td></tr>
+                    <tr><td>םיצע ףצר</td><td>2-3</td><td>65-75</td><td>םימדקתמ םיקרפמ</td></tr>
+                    <tr><td>הנתשמ ףצר</td><td>2-3</td><td>60-85</td><td>םימדקתמ (םיליחתמל)</td></tr>
+                    <tr><td>םיאטרופס</td><td>1-3</td><td>90-100</td><td>מ"חצ םילאוורטניא, תועיצפל תלובס</td></tr>
+                    <tr><td>םיבחרנ</td><td>1-3</td><td>85-95</td><td>תרבטצמ תיבוריא</td></tr>
+                    <tr><td>HIIT</td><td>1-2</td><td>65-90</td><td>תרבטצמ תיבוריא</td></tr>
+                </table>
+            </div>
+        </section>
+
+        <section id="training" class="section">
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1200&q=80" alt="אימון כושר">
+                <h2>האיר בל תלובס – סוגי אימון סבולת</h2>
+                <p>שימוש במאמצים מדורגים-מתמשכים בגבול אירובי-מתמשך של יכולת האדם. תורווי הובג ןוכיס םע תרשוקמ הדורי האיר בל תלובס.</p>
+            </div>
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=1200&q=80" alt="אימון רופף נמוך">
+                <h2>בחרנ ףצר ןומיא – אימון רופף נמוך</h2>
+                <ul>
+                    <li>מאמץ אירובי נמוך (60-65% HR<sub>MAX</sub>)</li>
+                    <li>הרטמה: ריצה רופף, מ"חצ רופף, אירובי בסיס</li>
+                    <li>לאתמ: לכל המאמאתמ</li>
+                </ul>
+            </div>
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1200&q=80" alt="אימון רופף בינוני">
+                <h2>םיצע ףצר ןומיא – אימון רופף בינוני</h2>
+                <ul>
+                    <li>מאמץ אירובי בינוני (70-75% HR<sub>MAX</sub>)</li>
+                    <li>הרטמה: אירובי רופף, מ"חצ רופף, האיר-בל תכרעמ</li>
+                    <li>לאתמ: מאתמ, מאטרופס</li>
+                </ul>
+            </div>
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=1200&q=80" alt="אימון רופף עצים">
+                <h2>הנתשמ ףצר ןומיא (קלטרפ, יוניש בצק) – אימון רופף עצים</h2>
+                <ul>
+                    <li>מאמץ אירובי עצים (70-90% HR אנאירובי)</li>
+                    <li>הרטמה: אירובי רופף, אירובי סבולת רופף, מ"חצ רופף</li>
+                    <li>לאתמ: מאתמ, מאטרופס</li>
+                </ul>
+            </div>
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=1200&q=80" alt="HIIT">
+                <h2>HIIT – םימיצע תוגופה ןומיא</h2>
+                <ul>
+                    <li>מאמצים אנאירוביים עצימים (90-100% HR<sub>MAX</sub>) עם מנוחות קצרות (1-3 דק')</li>
+                    <li>מאמצים בינוניים (3-6 דק') עם מנוחות ארוכות</li>
+                    <li>הרטמה: אירובי סבולת רופף, אירובי רופף</li>
+                    <li>אם מנוחה נמוכה – רופף (65% HR<sub>MAX</sub>)</li>
+                </ul>
+            </div>
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1200&q=80" alt="HIIT ינרדומ">
+                <h2>HIIT ינרדומ ןומיא</h2>
+                <ul>
+                    <li>מאמצים אנאירוביים עצימים (HR 85% לעמ) עם מנוחות קצרות</li>
+                    <li>מנוחות קצרות אנאירוביות (65% HR<sub>MAX</sub>)</li>
+                    <li>הרטמה: אירובי סבולת רופף, מ"חצ רופף</li>
+                </ul>
+            </div>
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&q=80" alt="יתרונות אירובי">
+                <h2>יבוריאה רשוכה תונורתי – יתרונות אירובי</h2>
+                <ul>
+                    <li>שיפור ביכולת אירובית, זיכרון, גמישות – גמישות זוכירב, מדה ילכ תופיפצב היילע (3 יפ דע) תוירדנוכוטימה</li>
+                    <li>שריפת אנרגיה וייצור חומצות לשרירים – יבוריאה לולסמב היגרנאה רורחש בצק</li>
+                    <li>הדירי - יבוריאנאה ףסב היילע (אימון על סף אנאירובי) – ץמאמב טאטקלה תמרב הדירי</li>
+                    <li>שיפור גליקוגן לאנרגיה – ןגוקילגה ןובשח לע היגרנא תקפהל (הובג מ"חצ)</li>
+                    <li>RUNNER'S HIGH – היגרנאב רוסחממ האצותכ תופייעה תעפוהב הייחדו ןגוקילגה ירגאמ רומיש</li>
+                </ul>
+            </div>
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1517838277536-f5f99be501cc?w=1200&q=80" alt="סולם עצימות">
+                <h2>סולם עצימות – אירובי סף / אירובי סבולת / סף אירובי</h2>
+                <p>תיבוריא תלובס – העובק תיברמ-תת ןצמח תמרב שומיש ךות ךשוממ ןמזל לועפל תלוכיה. םדבו רירשב העובק טאטקל תמר לע הרימשו.</p>
+                <p>יברימ יבוריא קפסה – םע תיברימ\ההובג ןצמח תמרב שומיש ךות ינוניב ןמז ךשמב לועפל תלוכיה. מ"חצה תלוכיב יולת. 400 תייחש, 3000 – 1500 תציר.</p>
+                <div class="check-yourself" data-quiz="training">
+                    <h3>✅ בדוק את עצמך – אימון</h3>
+                    <p>מה מסקנת E-MECHANIC? מה ההבדל בין HIIT ל-HIIT ינרדומ?</p>
+                    <button class="answer-btn" onclick="toggleCheckAnswer(this,'training')">הצג תשובה</button>
+                    <p class="check-answer" style="display:none;margin-top:0.5rem;padding:0.75rem;background:rgba(34,197,94,0.2);border-radius:8px">E-MECHANIC: פיצוי מטבולי – אימון אירובי לא גורם לירידה במשקל ישירה. HIIT: מנוחה רופפת. HIIT ינרדומ: מנוחה 65% HR (אנאירובית).</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="research" class="section">
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&q=80" alt="פעילות גופנית">
+                <h2>מחקר פעילות גופנית – 79,856 משתתפים (2002-2009)</h2>
+                <ul>
+                    <li>גיל 40-79, תוריאממ תולחמ אלל</li>
+                    <li>הכילה אלל | דע 'קד 30 | 30-60 'קד | 60 לעמ 'קד</li>
+                    <li>גלגרה הנוזת, ןושיע, לוהוכלא, תונבשוי ג"פ</li>
+                </ul>
+            </div>
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=1200&q=80" alt="מחקר CVD">
+                <h2>מחקר CVD – 26,862 ותמ ינפל</h2>
+                <ul>
+                    <li>רתוי םירגובמ םבור – תמותה ממחלות לב ~50%</li>
+                    <li>תימוי תיטיא הכילה םיעצבמש – ~33% (עש 3 לעמ)</li>
+                    <li>ןוכיס התיחפמ – קזח ילילש רשק אצמנ התומתל הריהמ הכילה. תופסונ תינפוג תוליעפב תולת אלל התומת</li>
+                </ul>
+            </div>
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1200&q=80" alt="סיכונים באימון">
+                <h2>סיכונים באימון אירובי</h2>
+                <ul>
+                    <li>בר ןמז םיכרוא – אימונים ארוכים</li>
+                    <li>רירש תסמ חותיפל – אין אידיאלים</li>
+                    <li>םיסוחסה לש הובג יאלב – הדימב (םייוארה ןומיאה יביכרמ לע םירמוש)</li>
+                    <li>תוילאנויצקנופ תויבוריאנא תולוכי – חותיפ תלוכי רסוח</li>
+                </ul>
+            </div>
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=1200&q=80" alt="מחקר Gripp">
+                <h2>מחקר Gripp – HIIT vs MICT (לקשמב)</h2>
+                <p>הרטשמ יניצק 27 – 30-50 םיאליגב, BMI 25>, VO2 50<, םינשעמ אל, עובשב םינומיא 2 'סקמ.</p>
+                <ul>
+                    <li><strong>MICT:</strong> הציר מ"חצהמ 60% – 3-6 עובשל 65%, 7 עובשל 70%, 8 עובשל 75%</li>
+                    <li><strong>HIIT:</strong> הציר מ"חצהמ 85% – 3-6 עובשל 90%, 7 עובשל 95%, 8 עובשל 100%</li>
+                    <li>הצובק לכ העציב – עובשב םינומיא 3. פיב"ה ןחבמ (הציר 'מ 20) – רקחמה תליחתב</li>
+                </ul>
+                <h3>םידדמ – Gripp:</h3>
+                <ul>
+                    <li>ןמוש יזוחא (םיבקוע אל) – םיירולק םיכרע</li>
+                    <li>BMI הזר ףוג תסמ</li>
+                    <li>ןילוסניאו זוקולג – גלוקוז וינסולין</li>
+                    <li>לורטסלוכ (VLDL, LDL, HDL)</li>
+                    <li>םידירצילגירט – ליפורפ םינמוש םדב</li>
+                </ul>
+                <p><strong>תונקסמ:</strong> HIIT תצובקב םיפתתשמה – מ"חצ, כולסטרול LDL, גלוקוז. אירובי תצובקב – ןמוש יזוחא, BMI, םידירצילגירט.</p>
+            </div>
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1200&q=80" alt="מחקר E-MECHANIC">
+                <h2>מחקר E-MECHANIC – מלוא הפרטים</h2>
+                <p>171 נבדקים, 18-65 גיל, BMI 25-45, םינשעמ אל, חותינ ורבע אל, תינכותמ קלח אל.</p>
+                <h3>תוצובק שולש:</h3>
+                <ul>
+                    <li><strong>8KKW:</strong> 8 קלוריות לק"ג – 800-1000 עובשב. ןותמ יבוריא (תואירב לע הרימשל תויללכה תוצלמהה)</li>
+                    <li><strong>20KKW:</strong> 20 קלוריות לק"ג – 2000-2500 עובשב. םיצע יבוריא (לקשמב הדרוהל תויללכה תוצלמהה)</li>
+                </ul>
+                <h3>הדידמ:</h3>
+                <ul>
+                    <li>ןומיאה תומיצע 65%-85% מ"חצה</li>
+                    <li>תוברעתהה (DLW) – הדידמ תירולקה האצוהה</li>
+                    <li>22 תוחפל 48 'קד – 4 עובשב םינושארה, 24ה עובשב תוללוכה</li>
+                    <li>ףוגה בכרה X-RAY – 160/174 המשתתפים</li>
+                </ul>
+                <h3>נוסחאות BMR:</h3>
+                <div class="formula">נשים: 0.0278×WEIGHT² + 9.2893×WEIGHT + 1528.9</div>
+                <div class="formula">גברים: −0.0971×WEIGHT² + 40.853×WEIGHT + 323.59</div>
+                <p><strong>תונקסמ:</strong> לקשמב הברה יכה הדירוה 20KKW – יופצכ אל לבא. הדירי בקע הרעוש – הדידמה את ךותב. החונמב תילובטמה – תוללוכ היגרנא תואצוה. תילובטמ היצטפדא – םיצפמ םינונגנמ.</p>
+            </div>
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=1200&q=80" alt="מחקר Khalafi">
+                <h2>מחקר Khalafi – אימון משולב (2587 משתתפים)</h2>
+                <p>49 מחקרים, 55-80 גיל, 12 שבועות. עובשב םינומיא 3-5. 36 מחקרים – אימון משולב (תודגנתהו יבוריא).</p>
+                <p><strong>תונקסמו תואצות:</strong> אימון משולב מועיל ל-מ"חצ. רירש חוכ רפשמכ – אירובי. מ"חצ רפשמכ – תודגנתה. קפסל יושע תודגנתהו יבוריא – םייתואירבה םיכרצל.</p>
+            </div>
+            <div class="card">
+                <h2>מחקר Moro – HIIRT vs TRT (לקשמ)</h2>
+                <p>HIIRT = HIIT + אימון כוח. TRT = אימון כוח בלבד.</p>
+                <ul>
+                    <li><strong>HIIRT:</strong> 3 set × 6 reps, 80% RM1, 20 sec + 2.5 min rest, ~43 min</li>
+                    <li><strong>TRT:</strong> 3 set × 15 reps, 15RM (~60%), 1.15 min rest, ~62 min</li>
+                </ul>
+                <p><strong>תונקסמ:</strong> HIIRT – יתועמשמ יוניש הארה (ףוג לקשמ, הזר ףוג תסמ). REE – אין הבדל. HIIRT רשפאמ רירש תסמב תועובש 8. יתרוסמ תודגנתה ןומיא ינפ – HIIRT לא. עגונה רופישל – ןמוש תסמ תתחפהו ףוג בכרה.</p>
+            </div>
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=1200&q=80" alt="מחקר Esfarjani">
+                <h2>מחקר Esfarjani – HIIT על סף לקטט</h2>
+                <p>17 מאמאנים, 3 קבוצות: 1G, 2G, GCON. מ"ק 3 תציר עוציבו.</p>
+                <ul>
+                    <li>1G: 5-8 אינטרוולים, הציר 'ד 3.5 (15.7 ש"מק), הלק הציר 3.5 (7.8 ש"מק)</li>
+                    <li>2G: 7-12 אינטרוולים, 30 תוינש (19.9 ש"מק), 4.5 תוקד (7.8 ש"מק)</li>
+                    <li>GCON: 75% מ"חצ – הציר</li>
+                </ul>
+                <p>10 עובשב, HR 75%. 2Gו 1G – הרפיש םיבחרנה. הברה יכה םידדמה.</p>
+            </div>
+            <div class="card">
+                <h2>אימון כוח לאירובי סיכונים – תלובס יאטרופסל תודגנתה ןומיא</h2>
+                <ol>
+                    <li>םיינוניב-םירצק םיקחרמב (מ"ק 10 <) – דחוימב םיגשיה רפשל יושע</li>
+                    <li>דלש-רירש סמועל תורושקה תועיצפ תיחפהל יושע</li>
+                    <li>ךשוממ םינומיא חפנ דגנכ – תודימע רפשל םיאטרופסו םינבבוחל רשפאל יושע</li>
+                    <li>עובשב םימעפ 1-3 ןיב (תורזח 5-8) לבגומ חפנב ועצובי בורל</li>
+                </ol>
+            </div>
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1200&q=80" alt="מדידה ארגומטרית">
+                <h2>הירטמוגרא ןחבמ – מדידה ארגומטרית</h2>
+                <ul>
+                    <li>ץמאמב תיללכ תיגולויזפ תלוכיו בלה דוקפת תא ןחובה ןחבמ</li>
+                    <li>גולוידרק וא\ו ךמסומ גולויזפ – קפוד דמו תודורטקלאל םירבוחמ</li>
+                    <li>תוקד רפסמ לש לק םומיח ועצבי ת\קדבנה</li>
+                    <li>םאתהב עופישה – תוריהמה תא הלעי ןחובה (םיאתמה לוקוטורפל)</li>
+                    <li>ךרוצה תדימב – גולוידרק וא\ו ךמסומה גולויזפה ןחביי</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="cheatsheet" class="section">
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=1200&q=80" alt="דף צ'יט">
+                <h2>📋 דף צ'יט – כל החומר בדף אחד</h2>
+                <p>הדפס או שמור – לחזרה מהירה לפני המבחן. נסה לכסות ולזכור.</p>
+                <button class="print-btn" onclick="document.querySelector('[data-section=cheatsheet]').click(); setTimeout(()=>window.print(), 100)">🖨️ הדפס דף צ'יט</button>
+            </div>
+            <div class="card" style="font-size:0.95rem">
+                <h3>סוגי סבולת</h3>
+                <table><tr><th>סוג</th><th>זמן</th><th>HR %</th></tr>
+                <tr><td>תורצק (אנאירובי)</td><td>~2 דק'</td><td>85%</td></tr>
+                <tr><td>תינוניב (אירובי)</td><td>2-15 דק'</td><td>70-80%</td></tr>
+                <tr><td>תכורא (ארוך)</td><td>>15 דק'</td><td>60-65%</td></tr></table>
+            </div>
+            <div class="card" style="font-size:0.95rem">
+                <h3>נוסחאות דופק</h3>
+                <p><strong>יוזיח:</strong> גברים 220−גיל | נשים 226−גיל</p>
+                <p><strong>טנקה:</strong> 208−(0.7×גיל)</p>
+            </div>
+            <div class="card" style="font-size:0.95rem">
+                <h3>בדיקות</h3>
+                <p><strong>6MWT:</strong> &lt;300 מ' = מוגבלות</p>
+                <p><strong>Bruce גברים:</strong> 14.8−(1.379×T)+(0.451×T²)−(0.012×T³)</p>
+                <p><strong>Bruce נשים:</strong> 4.38×T−3.9</p>
+            </div>
+            <div class="card" style="font-size:0.95rem">
+                <h3>אימונים – HR %</h3>
+                <table><tr><th>אימון</th><th>HR</th></tr>
+                <tr><td>רופף נמוך</td><td>60-65%</td></tr>
+                <tr><td>רופף בינוני</td><td>70-75%</td></tr>
+                <tr><td>רופף עצים</td><td>70-90%</td></tr>
+                <tr><td>סף אנאירובי</td><td>75-80%</td></tr>
+                <tr><td>HIIT</td><td>90-100%</td></tr>
+                <tr><td>HIIT ינרדומ</td><td>85% + מנוחה 65%</td></tr></table>
+            </div>
+            <div class="card" style="font-size:0.95rem">
+                <h3>מחקרים – מסקנות</h3>
+                <p><strong>E-MECHANIC:</strong> פיצוי מטבולי – אירובי לא = ירידה במשקל</p>
+                <p><strong>HIIT vs אירובי:</strong> HIIT משפר מ"חצ יותר בזמן קצר</p>
+                <p><strong>Khalafi:</strong> אימון משולב – מ"חצ, כולסטרול, גלוקוז, BMI</p>
+            </div>
+        </section>
+
+        <section id="flashcards" class="section">
+            <div class="card has-img">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1200&q=80" alt="למידה">
+                <h2>כרטיסיות למידה</h2>
+                <p>לחץ על הכרטיס כדי להפוך ולגלות את התשובה. סמן "ידעתי" או "לא ידעתי" – המערכת תזכיר לך לחזור (חזרה מרווחת).</p>
+                <div class="stats" id="flashStats">
+                    <div class="stat-box"><span class="number" id="flashKnown">0</span><br><span class="label">ידעתי</span></div>
+                    <div class="stat-box"><span class="number" id="flashReview">0</span><br><span class="label">לחזור היום</span></div>
+                </div>
+                <div class="flashcard" id="flashcard">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front" id="flashFront"></div>
+                        <div class="flashcard-back" id="flashBack"></div>
+                    </div>
+                </div>
+                <div class="flashcard-nav">
+                    <button onclick="prevFlashcard()">← הקודם</button>
+                    <span id="flashCounter"></span>
+                    <button onclick="nextFlashcard()">הבא →</button>
+                </div>
+                <p class="keyboard-hint">⌨️ מקשי חצים ← → לניווט בין כרטיסיות</p>
+                <div class="flashcard-feedback" style="margin-top:1rem;display:flex;gap:0.5rem;justify-content:center;flex-wrap:wrap">
+                    <button class="answer-btn" onclick="markFlashcard(false)" style="max-width:150px;background:rgba(239,68,68,0.3);border-color:var(--error)">לא ידעתי</button>
+                    <button class="answer-btn" onclick="markFlashcard(true)" style="max-width:150px;background:rgba(34,197,94,0.3);border-color:var(--success)">ידעתי ✓</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="quiz" class="section">
+            <div class="card has-img" id="quizIntro">
+                <img class="card-img" loading="lazy" src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1200&q=80" alt="בחינה">
+                <h2>בחינה</h2>
+                <p>לאחר שלמדת את החומר, הגיע הזמן לבחון את עצמך. לחץ על תשובה כדי לראות אם צדקת ולקבל הסבר.</p>
+                <div class="quiz-options">
+                    <label style="display:flex;align-items:center;gap:0.5rem;margin:0.5rem 0;cursor:pointer">
+                        <input type="checkbox" id="quizRandom" checked />
+                        <span>🔀 ערבוב שאלות (מחזק זכירה)</span>
+                    </label>
+                    <label style="display:flex;align-items:center;gap:0.5rem;margin:0.5rem 0;cursor:pointer">
+                        <input type="checkbox" id="quizTimer" />
+                        <span>⏱️ טיימר (15 דקות)</span>
+                    </label>
+                    <div id="retryFailedBox" style="display:none;margin:1rem 0;padding:1rem;background:rgba(239,68,68,0.15);border-radius:var(--radius);border:1px solid rgba(239,68,68,0.3)">
+                        <p style="margin-bottom:0.5rem"><strong>יש לך שאלות שנכשלת בהן!</strong></p>
+                        <button class="answer-btn" onclick="startQuiz(true)" style="background:var(--error)">🔄 חזור רק על השאלות שנכשלתי בהן</button>
+                    </div>
+                </div>
+                <div class="stats" id="quizStats" style="display:none">
+                    <div class="stat-box"><span class="number" id="correctCount">0</span><br><span class="label">נכונות</span></div>
+                    <div class="stat-box"><span class="number" id="wrongCount">0</span><br><span class="label">שגיאות</span></div>
+                    <div class="stat-box"><span class="number" id="totalCount">0</span><br><span class="label">סה"כ</span></div>
+                    <div class="stat-box" id="timerBox" style="display:none"><span class="number" id="quizTimerDisplay">15:00</span><br><span class="label">נותר</span></div>
+                </div>
+                <button class="start-quiz-btn" onclick="startQuiz(false)">התחל בחינה</button>
+                <p class="keyboard-hint">⌨️ בבחינה: מקשים 1-4 לבחירת תשובה</p>
+            </div>
+            <div id="quizQuestions"></div>
+            <div id="quizResult" class="quiz-result" style="display:none">
+                <h2>סיימת את הבחינה!</h2>
+                <p class="score" id="finalScore">0/0</p>
+                <p id="resultMessage"></p>
+                <div id="failedQuestionsList" style="display:none;margin:1.5rem 0;text-align:right">
+                    <h3 style="color:var(--error);margin-bottom:0.5rem">שאלות שנכשלת בהן:</h3>
+                    <ul id="failedQuestionsUl" style="list-style:none"></ul>
+                </div>
+                <button class="retry-btn" onclick="startQuiz(false)">נסה שוב (כל השאלות)</button>
+                <button class="retry-btn" id="retryFailedBtn" onclick="startQuiz(true)" style="display:none;margin-top:0.5rem;background:var(--error)">🔄 חזור רק על השאלות שנכשלתי</button>
+            </div>
+        </section>
+    </div>
+
+    <script src="data.js"></script>
+    <script>
+        // Navigation
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.section).classList.add('active');
+                updateProgress();
+            });
+        });
+
+        function updateProgress() {
+            const sections = ['how-to-learn','intro','zones','tests','protocols','training','research','cheatsheet','flashcards','quiz'];
+            const active = document.querySelector('.nav-tab.active').dataset.section;
+            const idx = sections.indexOf(active);
+            document.getElementById('progressFill').style.width = ((idx + 1) / sections.length * 100) + '%';
+        }
+        updateProgress();
+
+        // Hero stats
+        document.getElementById('heroFlashCount').textContent = typeof flashcards !== 'undefined' ? flashcards.length : 0;
+        document.getElementById('heroQuizCount').textContent = typeof quizData !== 'undefined' ? quizData.length : 0;
+
+        // Back to top
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            backToTop.classList.toggle('visible', window.scrollY > 400);
+        });
+        backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // Keyboard shortcuts - flashcards & quiz
+        document.addEventListener('keydown', (e) => {
+            const activeSection = document.querySelector('.section.active')?.id;
+            if (activeSection === 'flashcards') {
+                if (e.key === 'ArrowRight') { e.preventDefault(); nextFlashcard(); }
+                if (e.key === 'ArrowLeft') { e.preventDefault(); prevFlashcard(); }
+            }
+            if (activeSection === 'quiz' && document.getElementById('quizQuestions').children.length) {
+                if (e.key >= '1' && e.key <= '4') {
+                    const btns = document.querySelectorAll('.answer-btn:not(.disabled)');
+                    if (btns[e.key - 1]) btns[e.key - 1].click();
+                }
+            }
+        });
+
+        function toggleCheckAnswer(btn, id) {
+            const box = btn.closest('.check-yourself');
+            const ans = box.querySelector('.check-answer');
+            ans.style.display = ans.style.display === 'none' ? 'block' : 'none';
+            btn.textContent = ans.style.display === 'none' ? 'הצג תשובה' : 'הסתר תשובה';
+        }
+
+        // Flashcards + Spaced Repetition
+        const FLASH_STORAGE = 'study_koral_flash';
+        const REVIEW_DAYS = [1, 3, 7, 14]; // ימים לחזרה
+        let flashcardIndex = 0;
+        let flashcardData = JSON.parse(localStorage.getItem(FLASH_STORAGE) || '{}');
+
+        function getCardData(idx) {
+            if (!flashcardData[idx]) flashcardData[idx] = { known: 0, lastReview: null, nextReview: null };
+            return flashcardData[idx];
+        }
+        function saveFlashData() { localStorage.setItem(FLASH_STORAGE, JSON.stringify(flashcardData)); }
+
+        function markFlashcard(known) {
+            const d = getCardData(flashcardIndex);
+            d.known = known ? (d.known || 0) + 1 : 0;
+            d.lastReview = new Date().toISOString().slice(0,10);
+            const level = Math.min(d.known, REVIEW_DAYS.length - 1);
+            const days = REVIEW_DAYS[level] || 14;
+            const next = new Date();
+            next.setDate(next.getDate() + days);
+            d.nextReview = next.toISOString().slice(0,10);
+            saveFlashData();
+            updateFlashStats();
+            nextFlashcard();
+        }
+
+        function updateFlashStats() {
+            const today = new Date().toISOString().slice(0,10);
+            let known = 0, toReview = 0;
+            flashcards.forEach((_, i) => {
+                const d = getCardData(i);
+                if (d.known > 0) known++;
+                if (d.nextReview && d.nextReview <= today) toReview++;
+            });
+            document.getElementById('flashKnown').textContent = known;
+            document.getElementById('flashReview').textContent = toReview;
+        }
+
+        function showFlashcard() {
+            const card = flashcards[flashcardIndex];
+            document.getElementById('flashFront').textContent = card.q;
+            document.getElementById('flashBack').textContent = card.a;
+            document.getElementById('flashCounter').textContent = `${flashcardIndex + 1} / ${flashcards.length}`;
+            document.getElementById('flashcard').classList.remove('flipped');
+        }
+        document.getElementById('flashcard').addEventListener('click', () => {
+            document.getElementById('flashcard').classList.toggle('flipped');
+        });
+        function nextFlashcard() {
+            flashcardIndex = (flashcardIndex + 1) % flashcards.length;
+            showFlashcard();
+        }
+        function prevFlashcard() {
+            flashcardIndex = (flashcardIndex - 1 + flashcards.length) % flashcards.length;
+            showFlashcard();
+        }
+        showFlashcard();
+        updateFlashStats();
+
+        // Quiz
+        let quizStarted = false;
+        let currentQuestion = 0;
+        let correctAnswers = 0;
+        let wrongAnswers = 0;
+        let failedQuestionIndices = [];
+        let quizOrder = [];
+        let quizTimerInterval = null;
+        let retryFailedMode = false;
+
+        function startQuiz(retryFailedOnly) {
+            retryFailedMode = retryFailedOnly;
+            quizStarted = true;
+            currentQuestion = 0;
+            correctAnswers = 0;
+            wrongAnswers = 0;
+            if (!retryFailedOnly) failedQuestionIndices = [];
+            const random = document.getElementById('quizRandom')?.checked;
+            const useTimer = document.getElementById('quizTimer')?.checked;
+
+            if (retryFailedOnly && failedQuestionIndices.length > 0) {
+                quizOrder = [...failedQuestionIndices];
+                if (random) quizOrder.sort(() => Math.random() - 0.5);
+            } else {
+                quizOrder = [...Array(quizData.length).keys()];
+                if (random) quizOrder.sort(() => Math.random() - 0.5);
+            }
+
+            document.getElementById('quizIntro').style.display = 'block';
+            document.getElementById('quizResult').style.display = 'none';
+            document.getElementById('quizStats').style.display = 'flex';
+            document.getElementById('retryFailedBox').style.display = 'none';
+
+            if (useTimer) {
+                document.getElementById('timerBox').style.display = 'block';
+                startQuizTimer(15 * 60);
+            } else {
+                document.getElementById('timerBox').style.display = 'none';
+                if (quizTimerInterval) clearInterval(quizTimerInterval);
+            }
+            renderQuiz();
+        }
+
+        function startQuizTimer(seconds) {
+            if (quizTimerInterval) clearInterval(quizTimerInterval);
+            let remaining = seconds;
+            document.getElementById('quizTimerDisplay').textContent = Math.floor(remaining/60) + ':' + (remaining%60).toString().padStart(2,'0');
+            quizTimerInterval = setInterval(() => {
+                remaining--;
+                document.getElementById('quizTimerDisplay').textContent = Math.floor(remaining/60) + ':' + (remaining%60).toString().padStart(2,'0');
+                if (remaining <= 0) {
+                    clearInterval(quizTimerInterval);
+                    showQuizResult();
+                }
+            }, 1000);
+        }
+
+        function renderQuiz() {
+            const container = document.getElementById('quizQuestions');
+            container.innerHTML = '';
+            if (currentQuestion >= quizOrder.length) {
+                if (quizTimerInterval) clearInterval(quizTimerInterval);
+                showQuizResult();
+                return;
+            }
+            const qIdx = quizOrder[currentQuestion];
+            const q = quizData[qIdx];
+            const div = document.createElement('div');
+            div.className = 'quiz-question';
+            div.dataset.qidx = qIdx;
+            div.innerHTML = `
+                <h3>${currentQuestion + 1} / ${quizOrder.length}. ${q.question}</h3>
+                ${q.answers.map((a, i) => `
+                    <button class="answer-btn" data-idx="${i}" data-correct="${a.correct}">
+                        ${a.text}
+                    </button>
+                `).join('')}
+                <div class="explanation" id="explanation"></div>
+            `;
+            container.appendChild(div);
+            div.querySelectorAll('.answer-btn').forEach(btn => {
+                btn.addEventListener('click', () => handleAnswer(btn, q, qIdx));
+            });
+            updateQuizStats();
+        }
+
+        function handleAnswer(btn, q, qIdx) {
+            if (btn.classList.contains('disabled')) return;
+            const idx = parseInt(btn.dataset.idx);
+            const isCorrect = q.answers[idx].correct;
+            const explanation = q.answers[idx].explanation || q.explanation || '';
+            btn.classList.add(isCorrect ? 'correct' : 'wrong');
+            btn.parentElement.querySelectorAll('.answer-btn').forEach(b => {
+                b.classList.add('disabled');
+                if (q.answers[parseInt(b.dataset.idx)].correct) b.classList.add('correct');
+            });
+            const expEl = btn.parentElement.querySelector('.explanation');
+            expEl.innerHTML = `<strong>${isCorrect ? '✓ נכון!' : '✗ לא נכון'}</strong><br><br>${explanation}`;
+            expEl.classList.add('show', isCorrect ? 'correct' : 'wrong');
+            if (isCorrect) {
+                correctAnswers++;
+                if (retryFailedMode) {
+                    const pos = failedQuestionIndices.indexOf(qIdx);
+                    if (pos >= 0) failedQuestionIndices.splice(pos, 1);
+                }
+            } else {
+                wrongAnswers++;
+                if (!failedQuestionIndices.includes(qIdx)) failedQuestionIndices.push(qIdx);
+            }
+            updateQuizStats();
+            const nextQ = currentQuestion + 1;
+            setTimeout(() => {
+                currentQuestion = nextQ;
+                renderQuiz();
+            }, 2800);
+        }
+
+        function updateQuizStats() {
+            document.getElementById('correctCount').textContent = correctAnswers;
+            document.getElementById('wrongCount').textContent = wrongAnswers;
+            document.getElementById('totalCount').textContent = correctAnswers + wrongAnswers;
+        }
+
+        function showQuizResult() {
+            document.getElementById('quizQuestions').innerHTML = '';
+            document.getElementById('quizIntro').style.display = 'none';
+            document.getElementById('quizResult').style.display = 'block';
+            const total = correctAnswers + wrongAnswers;
+            document.getElementById('finalScore').textContent = `${correctAnswers}/${total}`;
+            const pct = total ? Math.round(correctAnswers / total * 100) : 0;
+            document.getElementById('resultMessage').textContent = pct >= 80 
+                ? 'מצוין! אתה מוכן למבחן! 🎉' 
+                : 'המשך ללמוד את החומר ונסה שוב. בהצלחה! 📚';
+
+            const failedList = document.getElementById('failedQuestionsList');
+            const failedUl = document.getElementById('failedQuestionsUl');
+            const retryFailedBtn = document.getElementById('retryFailedBtn');
+            const retryFailedBox = document.getElementById('retryFailedBox');
+
+            if (failedQuestionIndices.length > 0) {
+                failedList.style.display = 'block';
+                retryFailedBtn.style.display = 'block';
+                retryFailedBox.style.display = 'block';
+                failedUl.innerHTML = failedQuestionIndices.map(i => `<li style="margin:0.5rem 0;padding:0.5rem;background:rgba(0,0,0,0.2);border-radius:8px">• ${quizData[i].question}</li>`).join('');
+            } else {
+                failedList.style.display = 'none';
+                retryFailedBtn.style.display = 'none';
+                retryFailedBox.style.display = 'none';
+            }
+        }
+
+        function clearFailedQuestions() {
+            failedQuestionIndices = [];
+        }
+    </script>
+</body>
+</html>
