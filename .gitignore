@@ -3,3 +3,8 @@ venv/
 *.pyc
 __pycache__/
 pdf_content.txt
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
